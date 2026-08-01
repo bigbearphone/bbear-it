@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f97316" />
+  <meta name="description" content="ระบบคลังสินค้ากลาง สาขา Partner และรับเข้า-ขายออก ร้านหมีใหญ่ โมบาย" />
+  <title>BIGBEAR BUSINESS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <img src="logo.png" alt="หมีใหญ่ โมบาย" />
+        <div>
+          <strong>BIGBEAR</strong>
+          <span>BUSINESS SYSTEM</span>
+        </div>
+      </div>
+
+      <nav id="nav">
+        <button class="nav-item active" data-page="dashboard">⌂ <span>ภาพรวม</span></button>
+        <div class="nav-label">ระบบสินค้า</div>
+        <button class="nav-item" data-page="warehouse">▦ <span>คลังสินค้ากลาง</span></button>
+        <button class="nav-item" data-page="branches">⌂ <span>ระบบสาขา</span></button>
+        <button class="nav-item" data-page="receive">⇩ <span>รับสินค้าเข้า</span></button>
+        <button class="nav-item" data-page="sales">⇧ <span>ขายสินค้าออก</span></button>
+        <button class="nav-item" data-page="transfers">⇄ <span>โอนสินค้า</span></button>
+        <div class="nav-label">เครือข่าย</div>
+        <button class="nav-item" data-page="partners">♙ <span>Partner</span></button>
+        <button class="nav-item" data-page="reports">▥ <span>รายงาน</span></button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-chip">
+          <div class="avatar">A</div>
+          <div><strong>ผู้ดูแลระบบ</strong><span>Super Admin</span></div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="top-left">
+          <button id="menuToggle" class="icon-btn">☰</button>
+          <div>
+            <h1 id="pageTitle">ภาพรวมระบบ</h1>
+            <p id="pageSubtitle">สรุปการเคลื่อนไหวสินค้าและยอดขายทุกสาขา</p>
+          </div>
+        </div>
+        <div class="top-actions">
+          <div class="search-wrap">
+            <input id="globalSearch" placeholder="ค้นหา IMEI, รุ่น, Partner..." />
+          </div>
+          <button class="btn btn-outline" id="exportBtn">ส่งออกข้อมูล</button>
+          <button class="btn btn-primary" data-go="receive">+ รับสินค้า</button>
+        </div>
+      </header>
+
+      <section class="content">
+        <div id="dashboard" class="page active">
+          <div class="stats-grid" id="statsGrid"></div>
+
+          <div class="grid two">
+            <section class="card">
+              <div class="card-head">
+                <div><h3>สต๊อกตามสถานที่</h3><p>จำนวนเครื่องคงเหลือในแต่ละคลังและสาขา</p></div>
+              </div>
+              <div id="locationStock" class="progress-list"></div>
+            </section>
+            <section class="card">
+              <div class="card-head">
+                <div><h3>กิจกรรมล่าสุด</h3><p>การรับเข้า ขายออก และโอนสินค้า</p></div>
+              </div>
+              <div id="recentActivity" class="activity-list"></div>
+            </section>
+          </div>
+
+          <section class="card">
+            <div class="card-head">
+              <div><h3>สินค้าใกล้หมด</h3><p>รุ่นที่เหลือต่ำกว่า 3 เครื่อง</p></div>
+              <button class="btn btn-soft" data-go="warehouse">ดูคลังทั้งหมด</button>
+            </div>
+            <div class="table-wrap"><table><thead><tr><th>สินค้า</th><th>สี/ความจุ</th><th>สถานที่</th><th>คงเหลือ</th><th>สถานะ</th></tr></thead><tbody id="lowStockBody"></tbody></table></div>
+          </section>
+        </div>
+
+        <div id="warehouse" class="page">
+          <div class="page-toolbar">
+            <div class="filters">
+              <select id="stockLocationFilter"><option value="">ทุกสถานที่</option></select>
+              <select id="stockStatusFilter">
+                <option value="">ทุกสถานะ</option><option>พร้อมขาย</option><option>จองแล้ว</option><option>ขายแล้ว</option><option>ระหว่างโอน</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" data-go="receive">+ รับสินค้าเข้าคลัง</button>
+          </div>
+          <section class="card">
+            <div class="card-head"><div><h3>รายการสินค้าทั้งหมด</h3><p>ติดตามสินค้าเป็นรายเครื่องด้วย IMEI / Serial Number</p></div><span class="badge" id="stockCountBadge"></span></div>
+            <div class="table-wrap"><table><thead><tr><th>IMEI / Serial</th><th>สินค้า</th><th>สี/ความจุ</th><th>ต้นทุน</th><th>สถานที่</th><th>สถานะ</th><th></th></tr></thead><tbody id="stockTableBody"></tbody></table></div>
+          </section>
+        </div>
+
+        <div id="branches" class="page">
+          <div class="page-toolbar"><div><h2>สาขาทั้งหมด</h2><p>ดูสต๊อก ยอดขาย และสถานะการดำเนินงานรายสาขา</p></div><button class="btn btn-primary" id="addBranchBtn">+ เพิ่มสาขา</button></div>
+          <div class="branch-grid" id="branchGrid"></div>
+        </div>
+
+        <div id="partners" class="page">
+          <div class="page-toolbar"><div><h2>Partner Network</h2><p>จัดการร้านพาร์ทเนอร์ ผู้ส่งเคส และค่าคอมมิชชั่น</p></div><button class="btn btn-primary" id="addPartnerBtn">+ เพิ่ม Partner</button></div>
+          <section class="card">
+            <div class="table-wrap"><table><thead><tr><th>Partner Code</th><th>ชื่อร้าน/ผู้ติดต่อ</th><th>จังหวัด</th><th>ยอดขาย</th><th>คอมมิชชั่น</th><th>สถานะ</th><th></th></tr></thead><tbody id="partnerTableBody"></tbody></table></div>
+          </section>
+        </div>
+
+        <div id="receive" class="page">
+          <div class="form-layout">
+            <section class="card">
+              <div class="card-head"><div><h3>รับสินค้าเข้า</h3><p>บันทึกสินค้าจาก Supplier เข้าคลังกลางหรือสาขา</p></div></div>
+              <form id="receiveForm" class="form-grid">
+                <label>Supplier<input name="supplier" required placeholder="เช่น Samsung Thailand"></label>
+                <label>เลขที่เอกสาร<input name="docNo" required placeholder="PO / Invoice"></label>
+                <label>ยี่ห้อ<select name="brand" required><option>Apple</option><option>Samsung</option><option>Vivo</option><option>OPPO</option><option>Xiaomi</option><option>Infinix</option></select></label>
+                <label>รุ่นสินค้า<input name="model" required placeholder="เช่น iPhone 17 Pro Max"></label>
+                <label>สี<input name="color" required placeholder="เช่น Cosmic Orange"></label>
+                <label>ความจุ<input name="capacity" required placeholder="เช่น 256GB"></label>
+                <label>IMEI / Serial<input name="imei" required placeholder="สแกนหรือกรอกหมายเลข"></label>
+                <label>ต้นทุน<input name="cost" type="number" min="0" required placeholder="0"></label>
+                <label>ราคาขาย<input name="price" type="number" min="0" required placeholder="0"></label>
+                <label>รับเข้าที่<select name="location" id="receiveLocation" required></select></label>
+                <label class="full">หมายเหตุ<textarea name="note" rows="3" placeholder="รายละเอียดเพิ่มเติม"></textarea></label>
+                <div class="full form-actions"><button type="reset" class="btn btn-outline">ล้างข้อมูล</button><button class="btn btn-primary" type="submit">บันทึกรับสินค้า</button></div>
+              </form>
+            </section>
+            <aside class="card summary-card">
+              <h3>ขั้นตอนรับสินค้า</h3>
+              <ol>
+                <li>ตรวจสอบรุ่น สี ความจุ และ IMEI</li>
+                <li>บันทึกต้นทุนและราคาขาย</li>
+                <li>เลือกคลังหรือสาขาที่รับเข้า</li>
+                <li>ระบบเพิ่มสินค้าเข้าสต๊อกทันที</li>
+              </ol>
+              <div class="notice">ควรตรวจสอบ IMEI บนตัวเครื่องและกล่องให้ตรงกันก่อนบันทึก</div>
+            </aside>
+          </div>
+        </div>
+
+        <div id="sales" class="page">
+          <div class="form-layout">
+            <section class="card">
+              <div class="card-head"><div><h3>ขายสินค้าออก</h3><p>ตัดสต๊อกตาม IMEI พร้อมบันทึกผู้ขายและช่องทางการขาย</p></div></div>
+              <form id="saleForm" class="form-grid">
+                <label>IMEI / Serial<select name="imei" id="saleImei" required></select></label>
+                <label>ช่องทางขาย<select name="channel" required><option>หน้าร้าน</option><option>สินเชื่อ</option><option>Partner</option><option>ออนไลน์</option></select></label>
+                <label>สาขาที่ขาย<select name="branch" id="saleBranch" required></select></label>
+                <label>พนักงาน/Partner<input name="seller" required placeholder="ชื่อผู้ขาย"></label>
+                <label>ชื่อลูกค้า<input name="customer" required placeholder="ชื่อลูกค้า"></label>
+                <label>เบอร์โทร<input name="phone" placeholder="0xx-xxx-xxxx"></label>
+                <label>ราคาขาย<input name="salePrice" type="number" min="0" required></label>
+                <label>วิธีชำระ<select name="payment"><option>เงินสด</option><option>โอน</option><option>บัตร</option><option>สินเชื่อ</option></select></label>
+                <label class="full">หมายเหตุ<textarea name="note" rows="3"></textarea></label>
+                <div class="full form-actions"><button type="reset" class="btn btn-outline">ล้างข้อมูล</button><button class="btn btn-primary" type="submit">ยืนยันขายและตัดสต๊อก</button></div>
+              </form>
+            </section>
+            <aside class="card summary-card" id="selectedProductCard"><h3>ข้อมูลสินค้าที่เลือก</h3><p class="muted">เลือก IMEI เพื่อดูรายละเอียดสินค้า</p></aside>
+          </div>
+        </div>
+
+        <div id="transfers" class="page">
+          <div class="form-layout">
+            <section class="card">
+              <div class="card-head"><div><h3>โอนสินค้า</h3><p>ย้ายสินค้าเป็นรายเครื่องระหว่างคลังกลางและสาขา</p></div></div>
+              <form id="transferForm" class="form-grid">
+                <label>IMEI / Serial<select name="imei" id="transferImei" required></select></label>
+                <label>ปลายทาง<select name="destination" id="transferDestination" required></select></label>
+                <label>ผู้ดำเนินการ<input name="operator" required placeholder="ชื่อผู้ดำเนินการ"></label>
+                <label>เลขที่ใบโอน<input name="transferNo" required placeholder="TR-2026-0001"></label>
+                <label class="full">หมายเหตุ<textarea name="note" rows="3"></textarea></label>
+                <div class="full form-actions"><button class="btn btn-primary" type="submit">ยืนยันการโอน</button></div>
+              </form>
+            </section>
+            <aside class="card summary-card"><h3>ประวัติการโอนล่าสุด</h3><div id="transferHistory" class="activity-list"></div></aside>
+          </div>
+        </div>
+
+        <div id="reports" class="page">
+          <div class="stats-grid" id="reportStats"></div>
+          <div class="grid two">
+            <section class="card"><div class="card-head"><div><h3>ยอดขายรายสาขา</h3><p>สรุปจากรายการขายในระบบ</p></div></div><div id="salesByBranch" class="progress-list"></div></section>
+            <section class="card"><div class="card-head"><div><h3>ยอดขายตามช่องทาง</h3><p>หน้าร้าน สินเชื่อ Partner และออนไลน์</p></div></div><div id="salesByChannel" class="progress-list"></div></section>
+          </div>
+          <section class="card"><div class="card-head"><div><h3>รายการขายล่าสุด</h3></div></div><div class="table-wrap"><table><thead><tr><th>วันที่</th><th>สินค้า</th><th>IMEI</th><th>สาขา</th><th>ช่องทาง</th><th>ยอดขาย</th></tr></thead><tbody id="salesReportBody"></tbody></table></div></section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-card">
+      <div class="modal-head"><h3 id="modalTitle">เพิ่มข้อมูล</h3><button id="modalClose" class="icon-btn">✕</button></div>
+      <form id="modalForm" class="form-grid"></form>
+    </div>
+  </div>
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
