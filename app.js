@@ -21,7 +21,7 @@ document.getElementById('transferConfirm').onclick=()=>toast('ส่งออก
 
 document.querySelectorAll('#financeGrid button').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('#financeGrid button').forEach(x=>x.classList.remove('selected'));
-  b.classList.add('selected'); toast('เลือก '+b.dataset.finance);
+  b.classList.add('selected'); toast('เลือก '+b.dataset.finance+' • ระบบจะแสดงกติกาเฉพาะ Finance');
 });
 
 const telegramModal=document.getElementById('telegramModal');
@@ -88,7 +88,7 @@ full:`🐻 BIGBEAR FULL REPORT
 ระหว่างโอน: 4 เครื่อง
 รอสาขาเซ็นรับ: 2 รายการ
 Partner ปิดการขายวันนี้: 3 ราย
-ผู้รับ Supplier วันนี้: อัศวิน ชานัย
+ผู้รับ Supplier วันนี้: อัศวิน ชานัย + เจ้าหน้าที่คลัง A
 ผู้ออกบิลล่าสุด: ฝ่ายบัญชี B`
 };
 document.querySelectorAll('.report-option').forEach(b=>b.onclick=()=>{

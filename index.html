@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#f97316">
-  <title>BIGBEAR Mobile Demo</title>
+  <title>BIGBEAR ONE DEMO v1</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -16,8 +16,8 @@
     <div class="brand">
       <img src="logo.png" alt="หมีใหญ่ โมบาย">
       <div>
-        <strong>BIGBEAR MOBILE</strong>
-        <span>คลังหลัก: พรหมประกาย</span>
+        <strong>BIGBEAR ONE</strong>
+        <span>คลังหลัก: พรหมประกาย • DEMO v1</span>
       </div>
     </div>
     <button class="icon-btn" id="notifyBtn">🔔</button>
@@ -77,11 +77,12 @@
       <div class="screen-top"><button class="back">←</button><div><h1>รับสินค้าเข้า</h1><p>Supplier → คลังหลักพรหมประกาย</p></div></div>
       <div class="stepper"><span class="active">1</span><i></i><span>2</span><i></i><span>3</span></div>
       <section class="card form-card">
-        <label>Supplier<select><option>Samsung Thailand</option><option>Apple Distributor</option><option>Vivo Thailand</option></select></label>
-        <label>เลขที่ใบส่งของ<input value="INV-2569-00821"></label>
-        <label>รับเข้าที่<select><option>คลังหลักพรหมประกาย</option></select></label>
-        <label>ผู้ตรวจรับ<select><option>อัศวิน ชานัย</option><option>พนักงานคลัง A</option></select></label>
+        <label>Supplier<select><option>NIRACHACOMMUNICATION CO.,LTD</option><option>PPLAN</option></select></label>
+        <label>เลขที่ใบส่งของ (DO)<input value="DO-2569-00821"></label>
+        <label>ใบรับสินค้า (RI)<input value="RI-PK-2608-0008"></label><label>ใบกำกับภาษี (INV)<input value="INV-2608-0097"></label><label>รับเข้าที่<select><option>คลังหลักพรหมประกาย</option></select></label>
+        <label>ผู้รับสินค้า<select><option>อัศวิน ชานัย</option></select></label>
       </section>
+      <section class="card form-card"><label>เจ้าหน้าที่ฝ่ายคลัง<select><option>พนักงานคลัง A</option></select></label><div class="notice">ต้องมีชื่อ-นามสกุลและลายเซ็น 2 คน พร้อมรูป IMEI/Serial ใต้แต่ละรายการ</div></section>
       <section class="card scan-card">
         <div class="scan-icon">▣</div>
         <h3>สแกน IMEI / Barcode</h3>
@@ -109,16 +110,16 @@
       <h2 class="section-title">เลือกช่องทางขาย</h2>
       <div class="finance-grid" id="financeGrid">
         <button data-finance="เงินสด">💵<b>เงินสด</b></button>
-        <button data-finance="PPLAN">🍎<b>PPLAN</b></button>
-        <button data-finance="Samsung Finance+">📱<b>Samsung Finance+</b></button>
-        <button data-finance="SG Finance">🏦<b>SG Finance</b></button>
-        <button data-finance="S Leasing">🟠<b>S Leasing</b></button>
+        <button data-finance="PPLAN">🍎<b>PPLAN</b><small>ส่วนต่างยอดจัด • ค่าสัญญา 150/500</small></button>
+        <button data-finance="Samsung Finance+">📱<b>Samsung Finance+</b><small>ค่าบริการ 250 • คอมฯ สูงสุด 8%</small></button>
+        <button data-finance="SG Finance">🏦<b>SG Finance</b><small>ค่าบริการ 300 • คอมฯ สูงสุด 8%</small></button>
+        <button data-finance="S Leasing">🟠<b>S Leasing</b><small>อยู่ระหว่างทดลอง</small></button>
       </div>
       <section class="card form-card" id="saleDetails">
-        <label>Partner ผู้แนะนำ<select><option>ไม่มี Partner</option><option>BBP0003 - ตี๋ โมบาย</option><option>BBP0001 - ป๊ะปุ๊ โมบาย</option></select></label>
-        <label>ผู้ปิดการขาย<select><option>สมหญิง</option><option>พนักงานขาย A</option></select></label>
-        <label>ผู้ทำสัญญา<select><option>อัศวิน</option><option>เจ้าหน้าที่สินเชื่อ A</option></select></label>
-        <label>ผู้ออกบิล<select><option>ฝ่ายบัญชี B</option><option>พนักงานขาย A</option></select></label>
+        <label>Partner ผู้แนะนำ<select><option>ไม่มี Partner</option><option>โชค โมบาย • Partner ร้านค้า 8%</option><option>BBP0003 - ตี๋ โมบาย • Tier พิเศษ</option><option>BBP0001 - ป๊ะปุ๊ โมบาย • Tier พิเศษ</option></select></label>
+        <label>ผู้ปิดการขาย<select><option>PC ประจำสาขา</option><option>พนักงานขาย A</option></select></label>
+        <label>ผู้ทำสัญญา<select><option>PC ประจำสาขา</option><option>เจ้าหน้าที่สินเชื่อ A</option></select></label><label>ผู้ส่งมอบ<select><option>PC ประจำสาขา</option></select></label>
+        <label>ผู้ออกบิล<select><option>PC ประจำสาขา</option><option>ฝ่ายบัญชี B</option></select></label>
       </section>
       <div class="sticky-action"><button class="primary wide" id="saleConfirm">ยืนยันส่งมอบและตัดสต๊อก</button></div>
     </section>
@@ -172,11 +173,11 @@
     <section class="screen" id="partner">
       <div class="screen-top"><button class="back">←</button><div><h1>Partner</h1><p>ติดตามลูกค้าและค่าคอมมิชชั่น</p></div></div>
       <div class="kpi-grid compact">
-        <article class="kpi"><span>Partner Active</span><strong>18</strong><small>ราย</small></article>
+        <article class="kpi"><span>Partner Active</span><strong>19</strong><small>ราย</small></article>
         <article class="kpi"><span>ยอดขายเดือนนี้</span><strong>฿842K</strong><small>ผ่าน Partner</small></article>
       </div>
       <section class="card">
-        <div class="partner-row"><div class="partner-avatar">ต</div><div><b>BBP0003 • ตี๋ โมบาย</b><small>นำลูกค้าเข้ามาปิดที่ถนนทหาร</small></div><strong>฿2,795</strong></div>
+        <div class="partner-row"><div class="partner-avatar">ช</div><div><b>โชค โมบาย • Partner ร้านค้า</b><small>Samsung/SG 8% ของราคาปลีก</small></div><strong>฿18,640</strong></div><div class="partner-row"><div class="partner-avatar">ต</div><div><b>BBP0003 • ตี๋ โมบาย</b><small>นำลูกค้าเข้ามาปิดที่ถนนทหาร</small></div><strong>฿2,795</strong></div>
         <div class="partner-row"><div class="partner-avatar">ป</div><div><b>BBP0001 • ป๊ะปุ๊ โมบาย</b><small>ยอดขายเดือนนี้ 4 เครื่อง</small></div><strong>฿7,425</strong></div>
       </section>
     </section>

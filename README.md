@@ -1,20 +1,21 @@
-# BIGBEAR Mobile-first Demo
+# BIGBEAR ONE DEMO v1
 
-ตัวอย่าง UI สำหรับใช้งานบนมือถือเป็นหลัก
+Interactive Mobile-first Prototype สำหรับทดลอง Workflow ก่อนพัฒนาระบบจริง
 
-ฟังก์ชันตัวอย่าง
-- Dashboard ยอดขายวันนี้และเดือนนี้
-- รับสินค้าจาก Supplier
-- สแกน IMEI
-- ขายเงินสด / PPLAN / Samsung Finance+ / SG Finance / S Leasing
-- ระบุ Partner ผู้แนะนำ ผู้ขาย ผู้ทำสัญญา และผู้ออกบิล
-- โอนคลังหลักพรหมประกายไปสาขา
-- ลายเซ็นผู้ส่ง
-- รายงานสต๊อกตามคลังและสาขา
-- ตัวอย่างปุ่มส่งรายงาน Telegram
+## ครอบคลุม
+- คลังหลักพรหมประกาย และสาขาบริษัท ถนนทหาร / สามพร้าว
+- Partner Store: โชค โมบาย
+- รับสินค้าจาก NIRACHACOMMUNICATION CO.,LTD และ PPLAN
+- เอกสาร QT, BL, INV, CA, RE, CN, DN, PO, RI, DO
+- ผู้รับ + เจ้าหน้าที่คลัง ลงชื่อ 2 คน
+- รูป IMEI/Serial รายเครื่อง
+- ขายผ่าน PPLAN, Samsung Finance+, SG Finance, S Leasing, เงินสด/โอน
+- Partner Commission และค่าทำสัญญา 150/500 บาท
+- โอนสินค้าระหว่างสาขาและแจ้งพรหมประกาย
+- Stock แยกคลังและ Partner Store
+- Telegram Report 10:00 (เมื่อวานปิดแล้ว) และ 20:00
 
-วิธีเปิด:
-เปิด index.html หรืออัปโหลดทั้งโฟลเดอร์ขึ้น GitHub Pages
+## เปิดใช้งาน
+เปิด index.html หรืออัปโหลดไฟล์ทั้งหมดขึ้น GitHub Pages
 
-หมายเหตุ:
-นี่เป็น UI Demo ยังไม่เชื่อมฐานข้อมูล Login กล้องจริง ลายเซ็นจริง หรือ Telegram Bot
+> เป็น DEMO ยังไม่เชื่อมฐานข้อมูล กล้อง ลายเซ็น Login หรือ Telegram จริง
