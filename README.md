@@ -1,4 +1,24 @@
-# BIGBEAR ONE Interactive Demo v2
-เปิด index.html หรืออัปโหลดทั้งโฟลเดอร์ขึ้น GitHub Pages
+# BIGBEAR ONE DEMO v3
 
-มี Dashboard Desktop, Mobile Navigation, Smart POS, Customer 360°, Inventory, รับสินค้า, Partner Referral แบบอื่นๆพร้อมค่าคอมมิชชั่น และ Telegram Preview
+Interactive Demo ที่ปรับจากผลทดสอบล่าสุด
+
+- Work Queue ทุกการ์ดคลิกเปิดรายการได้
+- ระบุสาขาที่ขาย ผู้ขาย และผู้รับเงิน
+- Finance Matrix จำกัดช่องทางตามแบรนด์
+- Partner 3 ประเภท: พิเศษ / ร้าน / ลงทะเบียน
+- แสดงกติกาคอมมิชชั่นตามประเภท Partner
+- Samsung และ SG มีช่องเงินดาวน์ร้านรับ
+- ปุ่มบันทึกจำลองการออกบิล จองสินค้า และแจ้ง Telegram
+- Inventory Dashboard แยกสาขา
+- Inventory แสดง Supplier ต้นทุน และประเภทการรับ
+- มีประวัติการโยกสินค้าต่างสาขา
+- รับสินค้าแยกเลข Supplier กับเลข BIGBEAR อัตโนมัติ
+- เลข BIGBEAR ล็อกและต้องขอสิทธิ์กรรมการเพื่อแก้
+- ถ่ายรูปเอกสารและ Identifier พร้อมตรวจสอบความตรงกัน
+- Partner Dashboard แยกประเภทและดูสินค้าที่ขาย
+- รายงานทุกประเภทมี Date Range
+- Stock Report แสดงสินค้าที่แต่ละคลังมี
+- Finance Report แสดงยอดทั้งหมด รับแล้ว และคงเหลือ
+- Partner Report แสดงคอมฯ จ่ายแล้ว คงเหลือ และสินค้าที่เกี่ยวข้อง
+
+เปิด index.html หรืออัปโหลดทั้งชุดขึ้น GitHub Pages

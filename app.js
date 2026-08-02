@@ -1,101 +1,28 @@
-
-const screens=[...document.querySelectorAll('.screen')];
-function openScreen(id){
-  screens.forEach(s=>s.classList.toggle('active',s.id===id));
-  document.querySelectorAll('.bottom-nav [data-open]').forEach(b=>b.classList.toggle('active',b.dataset.open===id));
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>openScreen(b.dataset.open)));
-document.querySelectorAll('.back').forEach(b=>b.addEventListener('click',()=>openScreen('home')));
-
-function toast(msg){
-  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2200);
-}
-document.getElementById('fakeScan').onclick=()=>toast('สแกน IMEI สำเร็จ: 358002000000006');
-document.getElementById('saleScan').onclick=()=>toast('พบสินค้า iPhone 17 Pro Max');
-document.getElementById('transferScan').onclick=()=>toast('เพิ่มสินค้าเข้ารายการโอนแล้ว');
-document.getElementById('receiveConfirm').onclick=()=>toast('บันทึกรับเข้าและลายเซ็นเรียบร้อย');
-document.getElementById('saleConfirm').onclick=()=>toast('ส่งมอบสินค้าและตัดสต๊อกแล้ว');
-document.getElementById('transferConfirm').onclick=()=>toast('ส่งออกจากคลังแล้ว รอปลายทางเซ็นรับ');
-
-document.querySelectorAll('#financeGrid button').forEach(b=>b.onclick=()=>{
-  document.querySelectorAll('#financeGrid button').forEach(x=>x.classList.remove('selected'));
-  b.classList.add('selected'); toast('เลือก '+b.dataset.finance+' • ระบบจะแสดงกติกาเฉพาะ Finance');
-});
-
-const telegramModal=document.getElementById('telegramModal');
-const previewModal=document.getElementById('previewModal');
-function openTelegram(){telegramModal.classList.add('open')}
-document.getElementById('telegramBtn').onclick=openTelegram;
-document.getElementById('bottomTelegram').onclick=openTelegram;
-document.getElementById('closeModal').onclick=()=>telegramModal.classList.remove('open');
-document.getElementById('closePreview').onclick=()=>previewModal.classList.remove('open');
-
-const reports={
-daily:`🐻 BIGBEAR DAILY REPORT
-วันที่ 1 สิงหาคม 2569 เวลา 20:00 น.
-
-ยอดขายวันนี้: 428,600 บาท
-จำนวน: 13 เครื่อง
-
-แยกตาม Finance
-• PPLAN: 4 เครื่อง / 158,600 บาท
-• Samsung Finance+: 5 เครื่อง / 142,500 บาท
-• SG Finance: 2 เครื่อง / 76,000 บาท
-• S Leasing: 1 เครื่อง / 31,500 บาท
-• เงินสด: 1 เครื่อง / 20,000 บาท
-
-แยกตามสาขา
-• พรหมประกาย: 128,000 บาท
-• ถนนทหาร: 156,600 บาท
-• สามพร้าว: 84,000 บาท
-• หนองวัวซอ: 60,000 บาท`,
-month:`📅 BIGBEAR MONTHLY REPORT
-เดือน สิงหาคม 2569
-
-ยอดขายสะสม: 3,860,200 บาท
-จำนวน: 126 เครื่อง
-Partner: 28 เคส
-สาขายอดขายสูงสุด: ถนนทหาร`,
-mainstock:`📦 STOCK คลังหลักพรหมประกาย
-
-พร้อมขาย: 43 เครื่อง
-จองแล้ว: 4 เครื่อง
-ระหว่างตรวจรับ: 2 เครื่อง
-
-Apple: 14 เครื่อง
-Samsung: 18 เครื่อง
-Vivo: 5 เครื่อง
-OPPO: 4 เครื่อง
-Xiaomi/Infinix: 2 เครื่อง
-
-มูลค่าทุนรวม: 1,248,500 บาท`,
-allstock:`🏬 STOCK ทุกสาขา
-
-พรหมประกาย: 43 เครื่อง
-ถนนทหาร: 18 เครื่อง
-สามพร้าว: 12 เครื่อง
-หนองวัวซอ: 9 เครื่อง
-ระหว่างโอน: 4 เครื่อง
-
-รวมพร้อมขาย: 86 เครื่อง`,
-full:`🐻 BIGBEAR FULL REPORT
-
-ยอดขายวันนี้: 428,600 บาท / 13 เครื่อง
-ยอดขายเดือนนี้: 3,860,200 บาท / 126 เครื่อง
-สต๊อกพร้อมขาย: 86 เครื่อง
-ระหว่างโอน: 4 เครื่อง
-รอสาขาเซ็นรับ: 2 รายการ
-Partner ปิดการขายวันนี้: 3 ราย
-ผู้รับ Supplier วันนี้: อัศวิน ชานัย + เจ้าหน้าที่คลัง A
-ผู้ออกบิลล่าสุด: ฝ่ายบัญชี B`
-};
-document.querySelectorAll('.report-option').forEach(b=>b.onclick=()=>{
-  telegramModal.classList.remove('open');
-  document.getElementById('reportText').textContent=reports[b.dataset.report];
-  previewModal.classList.add('open');
-});
-document.getElementById('sendReport').onclick=()=>{
-  previewModal.classList.remove('open');toast('ส่งรายงานเข้า Telegram แล้ว');
-};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)};
+function page(id){$$('.page').forEach(x=>x.classList.toggle('active',x.id===id));$$('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===id));$('#sidebar').classList.remove('open');scrollTo({top:0,behavior:'smooth'})}
+$$('[data-page]').forEach(b=>b.onclick=()=>page(b.dataset.page));$('#menu').onclick=()=>$('#sidebar').classList.toggle('open');
+const branches=[['พรหมประกาย',43,86],['ถนนทหาร',18,36],['สามพร้าว',21,42],['โชค โมบาย',4,8]];
+$('#branchDash').innerHTML=branches.map(x=>`<div class="branchline"><span>${x[0]}</span><div class="bar"><i style="width:${x[2]}%"></i></div><b>${x[1]}</b></div>`).join('');
+$('#invBranches').innerHTML=branches.map(x=>`<article><span>${x[0]}</span><b>${x[1]}</b><small>${x[0]==='โชค โมบาย'?'สินค้าฝาก Partner':'พร้อมขายและจองรวม'}</small></article>`).join('');
+const queues={delivery:[['สมชาย ใจดี','iPhone 17 Pro Max','PPLAN • 14:00'],['อรทัย มั่นคง','Galaxy S26 Ultra','Samsung • 16:30']],pending:[['CASE-PPLAN-0041','รอตรวจเครดิต','คุณบอลแนะนำ'],['CASE-SG-0019','รอเอกสารเพิ่ม','Walk-in']],receive:[['NIRACHA','15 เครื่อง','DO-2608-0021']],transfer:[['TRF-PK-TM-0011','พรหมประกาย → ถนนทหาร','2 เครื่อง'],['TRF-SP-PK-0004','สามพร้าว → พรหมประกาย','1 เครื่อง']]};
+$$('[data-queue]').forEach(b=>b.onclick=()=>{const k=b.dataset.queue;$('#queueTitle').textContent=b.querySelector('span').textContent;$('#queueList').innerHTML=queues[k].map(x=>`<div class="listrow"><div><b>${x[0]}</b><small> ${x[1]} • ${x[2]}</small></div><button class="soft">${k==='delivery'?'ส่งมอบ':k==='pending'?'เปิดเคส':k==='receive'?'ตรวจรับ':'เซ็นรับ'}</button></div>`).join('')});
+let cart=[{brand:'Apple',name:'iPhone 17 Pro Max',id:'IMEI 357001000000001',price:52900,icon:'📱'},{brand:'Accessory',name:'Focus Glass iPhone 17',id:'Barcode 8850123456789',price:690,icon:'🛡️'}];
+function renderCart(){$('#cart').innerHTML=cart.map((x,i)=>`<div class="cartrow"><div class="icon">${x.icon}</div><div><b>${x.name}</b><small>${x.brand} • ${x.id}</small></div><strong>฿${x.price.toLocaleString()}</strong><button onclick="removeItem(${i})">×</button></div>`).join('');updateFinanceMatrix()}
+window.removeItem=i=>{cart.splice(i,1);renderCart()};
+$('#addProduct').onclick=()=>{const b=$('#demoProduct').value,n=$('#demoProduct').selectedOptions[0].text.split('—')[1].trim();cart.push({brand:b,name:n,id:b==='Accessory'?'Barcode 8850999000111':'IMEI DEMO-'+Date.now().toString().slice(-5),price:b==='Accessory'?390:25900,icon:b==='Accessory'?'🛡️':'📱'});renderCart();toast('เพิ่มสินค้าแล้ว')};
+$('#scanItem').onclick=()=>toast('Smart Scan พร้อมใช้งานในระบบจริง');
+function allowedFinance(){const brands=[...new Set(cart.filter(x=>x.brand!=='Accessory').map(x=>x.brand))];if(brands.includes('Apple'))return['PPLAN','เงินสด/โอน'];if(brands.includes('Samsung'))return['PPLAN','Samsung Finance+','เงินสด/โอน'];if(brands.some(b=>['OPPO','VIVO','XIAOMI','REALME','INFINIX'].includes(b)))return['PPLAN','SG Finance','เงินสด/โอน'];return['PPLAN','Samsung Finance+','SG Finance','เงินสด/โอน']}
+const forms={'PPLAN':`<div class="cols2"><label>ยอดจัด Finance<input value="49900"></label><label>เงินดาวน์ร้านรับ<input value="5999"></label></div><label>ราคาต้นทุนเครื่อง<input value="47000"></label><label>ค่าบริการ<input value="390"></label>`,'Samsung Finance+':`<div class="cols2"><label>ราคาเครื่อง<input value="25900"></label><label>เงินดาวน์ร้านรับ<input value="0"></label></div><label>ค่าบริการลูกค้า<input value="250"></label>`,'SG Finance':`<div class="cols2"><label>ราคาเครื่อง<input value="20999"></label><label>เงินดาวน์ร้านรับ<input value="0"></label></div><label>ค่าบริการลูกค้า<input value="300"></label>`,'เงินสด/โอน':`<label>ยอดรับจริง<input value="53590"></label><label>วิธีรับเงิน<select><option>เงินสด</option><option>โอน</option></select></label>`};
+function setFinance(f){$('#financeFields').innerHTML=forms[f]}
+function updateFinanceMatrix(){const allow=allowedFinance();$$('#financeButtons button').forEach(b=>{b.disabled=!allow.includes(b.dataset.f);b.classList.remove('selected')});const first=$$('#financeButtons button').find(b=>!b.disabled);if(first){first.classList.add('selected');setFinance(first.dataset.f)}$('#financeNotice').textContent='ช่องทางที่ใช้ได้: '+allow.join(', ')}
+$$('#financeButtons button').forEach(b=>b.onclick=()=>{if(b.disabled)return;$$('#financeButtons button').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');setFinance(b.dataset.f)});
+function leadFields(){const t=$('#leadType').value;if(t==='Partner พิเศษ')$('#leadFields').innerHTML=`<label>Partner<select><option>ตี๋ โมบาย นากว้าง</option><option>ป๊ะปุ๊ โมบาย</option><option>อีซี่ โมบาย</option><option>อมร โมบาย</option></select></label><div class="notice">Apple: (ยอดจัดจริงหลังหักเงินดาวน์ - ต้นทุน) - 150 = คอมมิชชั่นแท้จริง</div>`;else if(t==='Partner ร้าน')$('#leadFields').innerHTML=`<label>Partner<select><option>โชค โมบาย</option></select></label><div class="notice">Apple: ((ยอดจัดจริงหลังหักเงินดาวน์ - ต้นทุน) ÷ 2) - 390<br>Android: 0.8% ของราคาเครื่องขาย</div>`;else if(t==='Partner ลงทะเบียน')$('#leadFields').innerHTML=`<label>Partner<select><option>Partner ลงทะเบียน A</option></select></label><label>รูปแบบงาน<select><option>ส่งลูกค้าเข้าร้าน</option><option>ออกไปทำเคสเอง</option></select></label><div class="notice">Apple: ((ยอดจัดจริงหลังหักเงินดาวน์ - ต้นทุน) ÷ 2) - 390<br>Android PPLAN 0.6% • Samsung/SG 0.4% เข้าร้าน หรือ 0.6% ออกเคสเอง</div>`;else if(t==='อื่นๆ'||t==='ลูกค้าเก่าแนะนำ')$('#leadFields').innerHTML=`<label>ชื่อผู้แนะนำ<input value="คุณบอล"></label><label>ค่าคอมมิชชั่น (บาท)<input value="800"></label>`;else $('#leadFields').innerHTML=`<label>รายละเอียด<input placeholder="แคมเปญหรือช่องทางเพิ่มเติม"></label>`}
+$('#leadType').onchange=leadFields;leadFields();renderCart();$('#saveCase').onclick=()=>toast('ออกบิล SAL-TM-2608-0045 • จองสินค้า • แจ้ง Telegram แล้ว');
+const inventory=[['iPhone 17 Pro Max','IMEI 357001000000001','ถนนทหาร','PPLAN','47,000','ซื้อเชื่อ','จองแล้ว'],['Galaxy S26 Ultra','IMEI 358002000000003','พรหมประกาย','NIRACHA','41,900','ซื้อเชื่อ','พร้อมขาย'],['Focus Glass iPhone 17','Barcode 8850123456789','พรหมประกาย','Accessory Supplier A','120','ซื้อสด','พร้อมขาย'],['ESR Case iPhone 17','Barcode 8850987654321','สามพร้าว','Accessory Supplier B','350','ซื้อสด','พร้อมขาย'],['Galaxy S25 FE','IMEI 358002000000004','โชค โมบาย','NIRACHA','22,900','ฝากขาย','สินค้าฝาก']];
+$('#invTable').innerHTML=inventory.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('');
+$('#transferHistory').innerHTML=[['TRF-PK-TM-0011','พรหมประกาย → ถนนทหาร','Galaxy S26 Ultra 2 เครื่อง'],['TRF-SP-PK-0004','สามพร้าว → พรหมประกาย','iPhone 17 1 เครื่อง']].map(x=>`<div class="listrow"><div><b>${x[0]}</b><small> ${x[1]}</small></div><span>${x[2]}</span></div>`).join('');
+$('#supplierSelect').onchange=()=>{$('#supplierNoLabel').childNodes[0].textContent='เลขที่เอกสาร '+$('#supplierSelect').value};$('#requestEdit').onclick=()=>toast('ส่งคำขออนุมัติให้กรรมการบริษัทแล้ว');$$('[data-photo]').forEach(b=>b.onclick=()=>toast(b.dataset.photo==='document'?'ถ่ายรูปเอกสารแล้ว':'ถ่ายรูป Identifier สินค้าแล้ว'));$('#validateReceive').onclick=()=>{$('#matchStatus').textContent='✓ Identifier ในเอกสารตรงกับสินค้าทุกชิ้น';$('#matchStatus').classList.add('ok')};$('#confirmReceive').onclick=()=>toast('รับสินค้าเข้าคลังและบันทึก Audit Log แล้ว');
+const partners=[['ช','โชค โมบาย','Partner ร้าน','Galaxy S25 FE, Reno 16, iPhone 17','฿232,000','฿18,640'],['ต','ตี๋ โมบาย นากว้าง','Partner พิเศษ','iPhone 17 Pro Max, iPad Gen 11','฿148,500','฿7,425'],['ล','Partner ลงทะเบียน A','Partner ลงทะเบียน','Vivo V70, Galaxy A57','฿96,200','฿4,810']];
+function renderPartners(){const f=$('#partnerType').value;$('#partnerList').innerHTML=partners.filter(p=>f==='ทุกประเภท'||p[2]===f).map(p=>`<div class="partnerRow"><div class="avatar">${p[0]}</div><div><b>${p[1]}</b><small>${p[2]}</small><div class="detailbox">สินค้าที่เคยขาย: ${p[3]}</div></div><div><b>ยอดขาย</b><small>${p[4]}</small></div><div><b>คอมฯ ค้างจ่าย</b><small>${p[5]}</small></div></div>`).join('')}$('#partnerType').onchange=renderPartners;renderPartners();
+function report(){const t=$('#reportType').value,from=$('#dateFrom').value,to=$('#dateTo').value;let html=`<h3>${t}</h3><p>ช่วงวันที่ ${from} ถึง ${to}</p>`;if(t==='Stock ทุกคลัง')html+=branches.map(b=>`<div class="detailbox"><b>${b[0]} — ${b[1]} รายการ</b><br>iPhone 17 Pro Max, Galaxy S26 Ultra, Galaxy S25 FE, Focus Glass, ESR Case, USB-C Cable</div>`).join('');if(t==='Finance ค้างรับ')html+=`<div class="detailbox">PPLAN: ยอดทั้งหมด ฿382,500 • รับแล้ว ฿200,000 • เหลือ ฿182,500</div><div class="detailbox">Samsung: ยอดทั้งหมด ฿291,200 • รับแล้ว ฿100,000 • เหลือ ฿191,200</div><div class="detailbox">SG: ยอดทั้งหมด ฿126,300 • รับแล้ว ฿50,000 • เหลือ ฿76,300</div>`;if(t==='Partner Commission')html+=`<div class="detailbox">โชค โมบาย: จ่ายแล้ว ฿8,000 • เหลือ ฿18,640<br>Galaxy S25 FE, Reno 16, iPhone 17</div><div class="detailbox">ตี๋ โมบาย: จ่ายแล้ว ฿4,000 • เหลือ ฿7,425<br>iPhone 17 Pro Max, iPad Gen 11</div>`;$('#reportResult').innerHTML=html}$('#runReport').onclick=report;report();$('#quickReport').onclick=()=>toast('ส่งรายงานผู้บริหารเข้า Telegram แล้ว');
