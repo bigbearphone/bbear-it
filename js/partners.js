@@ -1,0 +1,3 @@
+
+import {store} from './store.js';
+export function renderPartners(){const p=store().partners;document.querySelector('#partners').innerHTML=`<div class="pagehead"><div><small>Partner Dashboard</small><h1>Partner</h1><p>ยอดขาย สินค้าที่ขาย และคอมมิชชั่น</p></div></div><section class="card">${p.map((x,i)=>`<div class="partnerrow"><div class="avatar">${x.name[0]}</div><div><b>${x.name}</b><small>${x.type}<br>${x.products.join(', ')}</small></div><div><b>ยอดขาย</b><small>฿${x.sales.toLocaleString()}</small></div><div><b>ค้างจ่าย</b><small>฿${x.due.toLocaleString()}</small></div></div>`).join('')}</section>`}

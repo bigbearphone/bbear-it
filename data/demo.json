@@ -1,0 +1,160 @@
+{
+  "branches": [
+    {
+      "id": "PK",
+      "name": "พรหมประกาย",
+      "type": "main"
+    },
+    {
+      "id": "TM",
+      "name": "ถนนทหาร",
+      "type": "company"
+    },
+    {
+      "id": "SP",
+      "name": "สามพร้าว",
+      "type": "company"
+    },
+    {
+      "id": "CH",
+      "name": "โชค โมบาย",
+      "type": "partner"
+    }
+  ],
+  "customers": [
+    {
+      "phone": "0891234567",
+      "name": "สมชาย ใจดี",
+      "tag": "VIP Gold"
+    },
+    {
+      "phone": "0815558899",
+      "name": "อรทัย มั่นคง",
+      "tag": "ลูกค้าเดิม"
+    }
+  ],
+  "inventory": [
+    {
+      "uid": "BB-000001",
+      "brand": "Apple",
+      "name": "iPhone 17 Pro Max",
+      "color": "Cosmic Orange",
+      "identifier": "357001000000001",
+      "tracking": "IMEI",
+      "branch": "ถนนทหาร",
+      "supplier": "PPLAN",
+      "cost": 47000,
+      "receiveType": "ซื้อเชื่อ",
+      "status": "จองแล้ว"
+    },
+    {
+      "uid": "BB-000002",
+      "brand": "Samsung",
+      "name": "Galaxy S26 Ultra",
+      "color": "Titanium Black",
+      "identifier": "358002000000003",
+      "tracking": "IMEI",
+      "branch": "พรหมประกาย",
+      "supplier": "NIRACHACOMMUNICATION CO.,LTD",
+      "cost": 41900,
+      "receiveType": "ซื้อเชื่อ",
+      "status": "พร้อมขาย"
+    },
+    {
+      "uid": "BB-000003",
+      "brand": "Focus",
+      "name": "Focus Glass iPhone 17",
+      "color": "Clear",
+      "identifier": "8850123456789",
+      "tracking": "Barcode",
+      "branch": "พรหมประกาย",
+      "supplier": "Accessory Supplier A",
+      "cost": 120,
+      "receiveType": "ซื้อสด",
+      "status": "พร้อมขาย",
+      "qty": 52
+    },
+    {
+      "uid": "BB-000004",
+      "brand": "ESR",
+      "name": "ESR Case iPhone 17",
+      "color": "Black",
+      "identifier": "8850987654321",
+      "tracking": "Barcode",
+      "branch": "สามพร้าว",
+      "supplier": "Accessory Supplier B",
+      "cost": 350,
+      "receiveType": "ซื้อสด",
+      "status": "พร้อมขาย",
+      "qty": 18
+    },
+    {
+      "uid": "BB-000005",
+      "brand": "Samsung",
+      "name": "Galaxy S25 FE",
+      "color": "Blue",
+      "identifier": "358002000000004",
+      "tracking": "IMEI",
+      "branch": "โชค โมบาย",
+      "supplier": "NIRACHACOMMUNICATION CO.,LTD",
+      "cost": 22900,
+      "receiveType": "ฝากขาย",
+      "status": "สินค้าฝาก"
+    }
+  ],
+  "partners": [
+    {
+      "name": "โชค โมบาย",
+      "type": "Partner ร้าน",
+      "sales": 232000,
+      "due": 18640,
+      "products": [
+        "Galaxy S25 FE",
+        "Reno 16",
+        "iPhone 17"
+      ]
+    },
+    {
+      "name": "ตี๋ โมบาย นากว้าง",
+      "type": "Partner พิเศษ",
+      "sales": 148500,
+      "due": 7425,
+      "products": [
+        "iPhone 17 Pro Max",
+        "iPad Gen 11"
+      ]
+    },
+    {
+      "name": "Partner ลงทะเบียน A",
+      "type": "Partner ลงทะเบียน",
+      "sales": 96200,
+      "due": 4810,
+      "products": [
+        "Vivo V70",
+        "Galaxy A57"
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "type": "delivery",
+      "title": "สมชาย ใจดี",
+      "detail": "089-123-4567 • 14:00 • iPhone 17 Pro Max • PPLAN"
+    },
+    {
+      "type": "pending",
+      "title": "CASE-PPLAN-0041",
+      "detail": "รอตรวจเครดิต • คุณบอลแนะนำ"
+    },
+    {
+      "type": "receive",
+      "title": "NIRACHA",
+      "detail": "DO-2608-0021 • 15 เครื่อง"
+    },
+    {
+      "type": "transfer",
+      "title": "TRF-PK-TM-0011",
+      "detail": "พรหมประกาย → ถนนทหาร • 2 เครื่อง"
+    }
+  ]
+}
