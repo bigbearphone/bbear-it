@@ -18,7 +18,7 @@ async function loadRemote(){
  };
 }
 export async function seed(){if(cache)return cache;if(isSupabaseConfigured()){try{cache=await loadRemote();mode='supabase';return cache}catch(e){console.error('Supabase load failed',e);if(!USE_DEMO_FALLBACK)throw e}}cache=await demoSeed();mode='demo';return cache}
-await seed();
+
 export function store(){return cache}
 export function dataMode(){return mode}
 export function save(){if(mode==='demo')localStorage.setItem(KEY,JSON.stringify(cache))}
