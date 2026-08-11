@@ -3,4 +3,4 @@
 // Never put service_role or database passwords in browser code.
 export const SUPABASE_URL = 'https://emwmvkqrkzhbttzupdra.supabase.co';
 export const SUPABASE_ANON_KEY = 'sb_publishable_r0zcvpDs0fN5-GXoLS02MQ_Wk4eGFJY';
-export const USE_DEMO_FALLBACK = true;
+export const USE_DEMO_FALLBACK = false;
